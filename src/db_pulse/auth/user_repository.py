@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from sqlalchemy import select
 
-from db_pulse.auth.user import User
+from db_pulse.auth.models import User
 from db_pulse.database.sessions import SessionLocal
 
 

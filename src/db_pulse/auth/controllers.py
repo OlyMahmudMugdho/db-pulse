@@ -3,9 +3,7 @@ from datetime import timedelta
 from fastapi import APIRouter, HTTPException, status
 from pwdlib import PasswordHash
 
-from db_pulse.auth.login_request import LoginRequest
-from db_pulse.auth.register_request import RegisterRequest
-from db_pulse.auth.token import Token
+from db_pulse.auth.dto import LoginRequest, RegisterRequest, Token
 from db_pulse.auth.user_repository import UserRepository
 from db_pulse.auth.utils import create_access_token
 from db_pulse.configs.jwt_config import JWTConfig

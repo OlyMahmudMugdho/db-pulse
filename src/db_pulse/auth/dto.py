@@ -2,7 +2,13 @@ from dataclasses import dataclass
 
 from pydantic import BaseModel
 
-from db_pulse.auth.user import User
+from db_pulse.auth.models import User
+
+
+@dataclass
+class LoginRequest(BaseModel):
+    username: str
+    password: str
 
 
 @dataclass
@@ -20,3 +26,8 @@ class RegisterRequest(BaseModel):
             email=self.email,
             password=self.password,
         )
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
