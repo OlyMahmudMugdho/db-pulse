@@ -7,7 +7,8 @@ from db_pulse.auth.login_request import LoginRequest
 from db_pulse.auth.register_request import RegisterRequest
 from db_pulse.auth.token import Token
 from db_pulse.auth.user_repository import UserRepository
-from db_pulse.auth.utils import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
+from db_pulse.auth.utils import create_access_token
+from db_pulse.configs.jwt_config import JWTConfig
 
 router = APIRouter()
 
@@ -46,7 +47,7 @@ async def login(request: LoginRequest):
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=JWTConfig.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
