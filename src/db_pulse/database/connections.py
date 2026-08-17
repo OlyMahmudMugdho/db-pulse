@@ -1,5 +1,7 @@
-from sqlalchemy import Connection, Engine
+from sqlalchemy import Connection
+
+from db_pulse.database.engines import sqlite_engine
 
 
-def get_sqlite_connection(engine: Engine) -> Connection:
-    return engine.connect()
+def get_sqlite_connection() -> Connection:
+    return sqlite_engine().connect()
